@@ -11,7 +11,9 @@
   "globals": {
     "AbortController": true,
     "expect": true,
-    "it": true
+    "it": true,
+    "require": true,
+    "module": true
   },
   "extends": [ "google" ],
   "rules": {
@@ -35,7 +37,7 @@
     "semi": "off",
     "comma-style": ["error", "last"],
     "object-curly-spacing": ["error", "always", { "arraysInObjects": false }],
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "no-undef": "error",
     "no-invalid-this": "off",
     "no-new-object": "error",
