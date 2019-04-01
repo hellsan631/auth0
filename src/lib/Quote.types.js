@@ -1,0 +1,28 @@
+// @flow
+
+export type Quote = {
+  id: number,
+  authorName: string,
+  text: string,
+}
+
+export type QuotePagination = {
+  page?: number,
+  pageSize?: number,
+}
+
+export type QuoteParams = QuotePagnation & {
+  authorName?: string,
+  text?: string,
+  sortBy?: string,
+}
+
+export type QuoteResponse = {
+  results: Array<Quote>, // matched results per query
+  pagination: {
+    page: number, // returned `page` number of request
+    pageSize: number, // returned `pageSize` of the request
+    pageCount: number, // total count of pages for query
+    rowCount: number, // total number of rows (elements) for query
+  },
+}

@@ -1,0 +1,128 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "flowtype"
+  ],
+  "env": {
+    "node": false,
+    "es6": true,
+    "browser": true
+  },
+  "globals": {
+    "AbortController": true,
+    "expect": true,
+    "it": true
+  },
+  "extends": [ "google" ],
+  "rules": {
+    "max-len": [
+      "error",
+      { "code": 100 }
+    ],
+    "require-jsdoc": "off",
+    "quote-props": "error",
+    "dot-notation": "error",
+    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "id-length": ["error", { 
+      "min": 2, 
+      "exceptions": [
+        "x", 
+        "i",
+        "t",
+        "k"
+      ] 
+    }],
+    "semi": "off",
+    "comma-style": ["error", "last"],
+    "object-curly-spacing": ["error", "always", { "arraysInObjects": false }],
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "no-invalid-this": "off",
+    "no-new-object": "error",
+    "no-new-func": "error",
+    "no-param-reassign":"error",
+    "no-array-constructor": "error",
+    "no-confusing-arrow": "error",
+    "no-useless-constructor": "warn",
+    "no-dupe-class-members": "error",
+    "no-plusplus": "error",
+    "no-case-declarations": "error",
+    "no-nested-ternary": "error",
+    "no-unneeded-ternary": "error",
+    "no-duplicate-imports": "off",
+    "no-mixed-operators": "error",
+    "no-else-return": "error",
+    "no-whitespace-before-property": "error",
+    "no-new-wrappers":"error",
+    "no-multi-spaces": "error",
+    "nonblock-statement-body-position": ["error", "below"],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "prefer-const": "off",
+    "prefer-arrow-callback": "warn",
+    "prefer-template": "warn",
+    "prefer-rest-params": "warn",
+    "prefer-spread": "warn",
+    "prefer-destructuring": ["warn", {"object": true, "array": false}],
+    "template-curly-spacing": ["error", "never"],
+    "one-var": ["error", "never"],
+    "operator-linebreak": ["error", "after"],
+    "jsx-quotes":["error", "prefer-double"],
+    "flowtype/boolean-style": [
+      2,
+      "boolean"
+    ],
+    "flowtype/define-flow-type": 1,
+    "flowtype/delimiter-dangle": [
+      2,
+      "always"
+    ],
+    "flowtype/generic-spacing": [
+      2,
+      "never"
+    ],
+    "flowtype/no-primitive-constructor-types": 2,
+    "flowtype/no-types-missing-file-annotation": 2,
+    "flowtype/no-weak-types": 0,
+    "flowtype/quote-props": 0,
+    "flowtype/object-type-delimiter": [
+      2,
+      "comma"
+    ],
+    "flowtype/require-parameter-type": 2,
+    "flowtype/require-return-type": [
+      2,
+      "always",
+      {
+        "annotateUndefined": "never"
+      }
+    ],
+    "flowtype/require-valid-file-annotation": 2,
+    "flowtype/semi": [
+      2,
+      "never"
+    ],
+    "flowtype/space-after-type-colon": [
+      2,
+      "always"
+    ],
+    "flowtype/space-before-generic-bracket": [
+      2,
+      "never"
+    ],
+    "flowtype/space-before-type-colon": [
+      2,
+      "never"
+    ],
+    "flowtype/union-intersection-spacing": [
+      2,
+      "always"
+    ],
+    "flowtype/use-flow-type": 1,
+    "flowtype/valid-syntax": 1
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  }
+}

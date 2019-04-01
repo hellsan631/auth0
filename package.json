@@ -2,6 +2,11 @@
   "name": "auth0",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "flow-bin": "^0.95.1",
+    "eslint-config-google": "^0.12.0",
+    "eslint-plugin-flowtype": "^3.4.0"
+  },
   "dependencies": {
     "auth0-lock": "^11.14.1",
     "react": "^16.8.6",
@@ -14,6 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "flow": "flow",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

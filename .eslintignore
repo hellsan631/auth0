@@ -1,0 +1,4 @@
+flow_typed/
+node_modules/
+dist/
+benchmark.js
