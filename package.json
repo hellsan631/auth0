@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "flow-bin": "^0.95.1",
     "eslint-config-google": "^0.12.0",
-    "eslint-plugin-flowtype": "^3.4.0"
+    "eslint-plugin-flowtype": "^3.4.0",
+    "flow-bin": "^0.95.1"
   },
   "dependencies": {
     "auth0-lock": "^11.14.1",
@@ -13,6 +13,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-toastify": "^5.0.0-rc.6",
     "styled-components": "^4.2.0"
   },
   "scripts": {

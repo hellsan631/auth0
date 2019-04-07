@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js'
 import { AUTH_CONFIG } from './variables'
-import Manager from './Manager';
+import Manager from './Manager'
 
 class Auth {
   api = new auth0.WebAuth({
@@ -12,6 +12,21 @@ class Auth {
     scope: AUTH_CONFIG.scopes,
   })
 
+  changePassword(email) {
+    return new Promise((resolve, reject) => {
+      this.api.changePassword({
+        connection: AUTH_CONFIG.database,
+        email,
+      }, (err, response) => {
+        console.log(err, response);
+        if (err) {
+          return reject(err)
+        }
+        resolve(response)
+      })
+    })
+  }
+
   renewSession() {
     return new Promise((resolve, reject) => {
       this.api.checkSession({}, (err, authResult) => {
@@ -20,7 +35,7 @@ class Auth {
         }
 
         resolve(authResult)
-      });
+      })
     })
   }
 
@@ -31,7 +46,7 @@ class Auth {
           return reject(err)
         }
         resolve(authResult)
-      });
+      })
     })
   }
 

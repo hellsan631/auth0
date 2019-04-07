@@ -8,6 +8,7 @@ const AUTH_SCOPES = [
 ]
 
 export const AUTH_CONFIG = {
+  database: 'Username-Password-Authentication',
   domain: 'targetproof.auth0.com',
   clientID: 'im66rJznvmvjLaEar4VwH45YmW76zU5O',
   callbackUrl: 'http://localhost:3000/callback',

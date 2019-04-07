@@ -3,15 +3,22 @@ import {
   handleLogin,
   handleHydrate,
   handleLogout,
+  handleChangePassword,
 } from './UserActions';
 
 const UserReducer = async (state, { type, payload }) => {
   console.log('type', type)
   switch (type) {
+    case 'CHANGE_PASSWORD':
+      return {
+        ...state,
+        ...await handleChangePassword(state.user),
+      }
     case 'HYDRATE':
       return {
         ...state,
         ...await handleHydrate(),
+        hydrated: true,
       }
     case 'CALLBACK':
       return {

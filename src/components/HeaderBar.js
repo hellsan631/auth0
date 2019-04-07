@@ -57,6 +57,7 @@ function HeaderBar({ location, match }) {
               className="u-pull-right"
               onClick={loginClick}
               disabled={loading}
+              primary
             >
               Login
             </Button>

@@ -1,6 +1,7 @@
 import history from '../lib/history'
 import { AUTH_CONFIG } from '../lib/auth0/variables'
 import Auth from '../lib/auth0/Auth'
+import { toast } from 'react-toastify'
 
 const fetchAndCombineUserData = async (auth) => {
   if (!auth) {
@@ -10,6 +11,20 @@ const fetchAndCombineUserData = async (auth) => {
   return {
     auth,
     user: await Auth.getAllUserData(accessToken, idTokenPayload),
+  }
+}
+
+export const handleChangePassword = async ({ email }) => {
+  try {
+    toast.success(await Auth.changePassword(email))
+    return {
+      sent: true,
+    }
+  } catch (error) {
+    toast.error(error.message)
+    return {
+      sent: false,
+    }
   }
 }
 

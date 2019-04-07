@@ -7,7 +7,10 @@ import useUser from '../hooks/useUser'
 import React from 'react'
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-  const { state } = useUser()
+  const { state, loading } = useUser()
+  if (!state.hydrated) {
+    return null
+  }
   return (
     <Route
       {...rest}
