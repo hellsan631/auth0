@@ -16,8 +16,7 @@ class Auth {
     return new Promise((resolve, reject) => {
       this.api.checkSession({}, (err, authResult) => {
         if (err) {
-          console.log(err)
-          return reject(err)
+          resolve(false)
         }
 
         resolve(authResult)

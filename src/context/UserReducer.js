@@ -6,7 +6,7 @@ import {
 } from './UserActions';
 
 const UserReducer = async (state, { type, payload }) => {
-  console.log(type)
+  console.log('type', type)
   switch (type) {
     case 'HYDRATE':
       return {

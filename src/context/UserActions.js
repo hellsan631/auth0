@@ -3,6 +3,9 @@ import { AUTH_CONFIG } from '../lib/auth0/variables'
 import Auth from '../lib/auth0/Auth'
 
 const fetchAndCombineUserData = async (auth) => {
+  if (!auth) {
+    return {}
+  }
   const { accessToken, idTokenPayload } = auth
   return {
     auth,
@@ -23,9 +26,6 @@ export const handleCallback = async () => {
 export const handleHydrate = async () => {
   try {
     const auth = await Auth.renewSession()
-    if (!auth) {
-      return {}
-    }
     return await fetchAndCombineUserData(auth)
   } catch (error) {
     console.log(error)

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-export default function Login() {
+export default function Profile() {
   return (
     <Fragment>
       hi

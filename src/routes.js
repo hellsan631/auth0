@@ -8,9 +8,27 @@ import logo from './logo.svg'
 import history from './lib/history'
 import HeaderBar from './components/HeaderBar'
 import useUser from './hooks/useUser'
+import PrivateRoute from './components/PrivateRoute';
 
-const Login = lazy(() => import('./pages/Login'))
-const Callback = lazy(() => import('./pages/Callback'))
+export const RouteList = [
+  {
+    path: '/profile',
+    component: lazy(() => import('./pages/Profile')),
+    title: 'Profile',
+    order: 2,
+    authenticated: true,
+  },
+  {
+    path: '/callback',
+    component: lazy(() => import('./pages/Callback')),
+  },
+  {
+    path: '/',
+    component: lazy(() => import('./pages/Home')),
+    title: 'Home',
+    order: 1,
+  },
+]
 
 export default function Routes() {
   const [hydrated, setHydrated] = useState(false)
@@ -23,14 +41,25 @@ export default function Routes() {
 
   return (
     <Fragment>
-      <HeaderBar />
       <Router history={history}>
+        <HeaderBar />
         <Suspense
           fallback={<img src={logo} className="App-logo" alt="logo" />}
         >
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/callback" component={Callback} />
+            {
+              RouteList.map((props) => {
+                if (props.authenticated) {
+                  return (
+                    <PrivateRoute key={props.path} {...props} />
+                  )
+                }
+
+                return (
+                  <Route key={props.path} {...props} />
+                )
+              })
+            }
           </Switch>
         </Suspense>
       </Router>
