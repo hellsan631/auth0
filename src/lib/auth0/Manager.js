@@ -1,12 +1,12 @@
-import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './variables';
+import auth0 from 'auth0-js'
+import { AUTH_CONFIG } from './variables'
 
 class Manager {
-  accessToken;
-  api;
+  accessToken
+  api
 
   init(accessToken) {
-    this.accessToken = accessToken;
+    this.accessToken = accessToken
     this.api = new auth0.Management({
       token: accessToken,
       domain: AUTH_CONFIG.domain,
@@ -17,7 +17,7 @@ class Manager {
     return new Promise((resolve) => {
       this.api.getUser(userId, (err, userInfo) => {
         resolve(userInfo)
-      });
+      })
     })
   }
 }

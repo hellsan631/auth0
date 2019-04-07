@@ -5,10 +5,11 @@ import Manager from './Manager';
 class Auth {
   api = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
+    audience: `https://${AUTH_CONFIG.domain}/api/v2/`,
     clientID: AUTH_CONFIG.clientID,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid profile read:current_user',
+    scope: AUTH_CONFIG.scopes,
   })
 
   renewSession() {
@@ -35,23 +36,9 @@ class Auth {
     })
   }
 
-  async getAllUserData(accessToken) {
-    console.log(accessToken)
+  async getAllUserData(accessToken, { sub: userId }) {
     Manager.init(accessToken)
-    const { sub: userId } = await this.getUserInfo()
     return await Manager.getUser(userId)
-  }
-
-  getUserInfo(accessToken) {
-    return new Promise((resolve, reject) => {
-      this.api.client.userInfo(accessToken, (err, user) => {
-        if (err) {
-          return reject(err)
-        }
-        console.log(user)
-        resolve(user)
-      })
-    })
   }
 
   authorize() {
@@ -60,7 +47,7 @@ class Auth {
 
   logout() {
     return this.api.logout({
-      returnTo: AUTH_CONFIG.logoutRoute,
+      returnTo: AUTH_CONFIG.logoutUrl,
     })
   }
 }
