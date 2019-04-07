@@ -6,7 +6,7 @@ import type {
   QuoteParams,
   Quote,
 } from './Quote.types'
-import EasyFetch from './EasyFetch'
+import EasyFetch from '../EasyFetch'
 
 const BASE_URL = 'https://auth0-exercise-quotes-api.herokuapp.com/api';
 

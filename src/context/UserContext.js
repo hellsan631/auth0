@@ -1,14 +1,15 @@
-import React, { useReducer, useContext, createContext } from 'react'
+import React, { useContext, createContext } from 'react'
 import UserReducer from './UserReducer'
+import useAsyncReducer from '../hooks/useAsyncReducer'
 
-const UserContext = createContext(false)
+const UserContext = createContext({})
 
 export function UserProvider({ children }) {
   const context = useContext(UserContext)
-  const [state, dispatch] = useReducer(UserReducer, context)
+  const reducer = useAsyncReducer(UserReducer, context)
 
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={reducer}>
       {children}
     </UserContext.Provider>
   )
