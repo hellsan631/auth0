@@ -28,8 +28,6 @@ export default class EasyFetch {
         }
     )
 
-    console.log(this.addQueryStringToUrl(url, params))
-
     request.controller = controller
 
     return request

@@ -10,7 +10,7 @@ const promises = {}
  * @param {string} uid Unique Id to avoid duplicate promises
  * @return {Array} [resource.value, resource]
  */
-const PromiseResource = (thenable, uid) => {
+const promiseResource = (thenable, uid) => {
   if (!uid) {
     throw new Error('Unique ID must be present for promise tracking')
   }
@@ -59,4 +59,4 @@ const PromiseResource = (thenable, uid) => {
   throw resource.promise;
 }
 
-export default PromiseResource;
+export default promiseResource;
