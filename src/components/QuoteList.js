@@ -2,11 +2,11 @@ import React, { Fragment, Suspense, useState, memo, useMemo, useEffect, useCallb
 import QuoteChunk from './QuoteChunk'
 
 function QuoteList({ page = 1, pageSize, authorName, text, sortBy }) {
+  const [currentPage, setCurrentPage] = useState(page)
+  const [pageArray, setPageArray] = useState([{ page }])
   const params = useMemo(() => {
     return { authorName, text, sortBy, pageSize }
   }, [authorName, text, sortBy, pageSize])
-  const [currentPage, setCurrentPage] = useState(page)
-  const [pageArray, setPageArray] = useState([{ page }])
 
   const handleIncrementPage = useCallback(() => {
     setPageArray((pages) => {
