@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import promiseResource from './promiseResource'
-import { getAll } from '../lib/Quote'
+import { search } from '../lib/Quote'
 
-export function useAllQuotes(params) {
-  const uid = `get-all-quotes-${JSON.stringify(params)}`
+export function useSearchQuotes(params) {
+  const uid = `get-search-quotes-${JSON.stringify(params)}`
   const promise = async () => {
-    return await getAll(params)
+    return await search(params)
   }
 
   const [{ results }, resource] = promiseResource(
@@ -15,7 +15,7 @@ export function useAllQuotes(params) {
 
   useEffect(() => {
     return () => resource.cleanup()
-  }, [])
+  }, [params])
 
   return results
 }

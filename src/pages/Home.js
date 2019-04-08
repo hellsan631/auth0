@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
-import { useAllQuotes } from '../hooks/useQuotes';
-import QuoteList from '../components/QuoteList';
+import QuoteList from '../components/QuoteList'
 
 export default function Home() {
   return (
     <div className="container">
       <div className="row">
-        <QuoteList />
+        <QuoteList
+          pageSize={25}
+        />
       </div>
     </div>
   )

@@ -1,23 +1,26 @@
-import React, { Fragment, Suspense, useState } from 'react'
+import React, { Fragment, Suspense, useState, memo } from 'react'
 import QuoteChunk from './QuoteChunk'
 
-export default function QuoteList({ page = 1, ...initial }) {
+function QuoteList({ page = 1, ...params }) {
   const [currentPage, setCurrentPage] = useState(page)
-  const [params, setParams] = useState([{ page, ...initial }])
+  const [pageArray, setPageArray] = useState([{ page }])
   const handleIncrementPage = () => {
     const newPage = currentPage + 1;
     setCurrentPage(newPage)
-    setParams([...params, { page: newPage, ...initial }])
+    setPageArray([...pageArray, { page: newPage }])
   }
 
   return (
     <Fragment>
       {
-        params.map((paramSet) => {
+        pageArray.map((paramSet) => {
           return (
             <QuoteChunk
               key={`page-${paramSet.page}`}
-              params={paramSet}
+              params={{
+                ...paramSet,
+                ...params,
+              }}
               onScrollFire={handleIncrementPage}
             />
           )
@@ -26,3 +29,5 @@ export default function QuoteList({ page = 1, ...initial }) {
     </Fragment>
   )
 }
+
+export default memo(QuoteList)
