@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import useDebounce from 'react-use/lib/useDebounce'
 
 export default function SearchBar({
   onChange,
@@ -10,8 +11,15 @@ export default function SearchBar({
   const [radio, setRadio] = useState(defaultRadio)
   const onInputChange = ({ target: { value } }) => {
     setSearch(value)
-    onChange({ field: value, type: radio })
   }
+
+  useDebounce(
+    () => {
+      onChange({ field: search, type: radio })
+    },
+    250,
+    [search]
+  )
 
   return (
     <div className="row">
