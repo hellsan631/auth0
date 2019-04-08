@@ -1,7 +1,8 @@
-import React, { Fragment, Suspense, useState, memo } from 'react'
+import React, { Fragment, Suspense, useState, memo, useEffect } from 'react'
 import QuoteChunk from './QuoteChunk'
 
-function QuoteList({ page = 1, ...params }) {
+function QuoteList({ page = 1, pageSize, authorName, text, sortBy }) {
+  const params = { authorName, text, sortBy, pageSize }
   const [currentPage, setCurrentPage] = useState(page)
   const [pageArray, setPageArray] = useState([{ page }])
   const handleIncrementPage = () => {
@@ -10,16 +11,22 @@ function QuoteList({ page = 1, ...params }) {
     setPageArray([...pageArray, { page: newPage }])
   }
 
+  useEffect(() => {
+    if (pageArray.length > 1) {
+      setPageArray([{ page }])
+    }
+  }, [authorName, text, sortBy, pageSize])
+
   return (
     <Fragment>
       {
-        pageArray.map((paramSet) => {
+        pageArray.map(({ page }) => {
           return (
             <QuoteChunk
-              key={`page-${paramSet.page}`}
+              key={`quote-chunk-${JSON.stringify({ ...params, page })}`}
               params={{
-                ...paramSet,
                 ...params,
+                page,
               }}
               onScrollFire={handleIncrementPage}
             />

@@ -2,7 +2,6 @@ import { useEffect, useState, useMemo } from 'react'
 import { search } from '../lib/Quote'
 import EasyFetch from '../lib/EasyFetch'
 import cancelableResource from './cancelableResource'
-import promiseResource from './promiseResource'
 
 export function useSearchQuotes(params) {
   const uid = `get-search-quotes-${JSON.stringify(params)}`

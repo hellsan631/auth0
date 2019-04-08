@@ -1,22 +1,54 @@
-import React, { Suspense, memo } from 'react'
-import QuoteQueryChunk from './QuoteQueryChunk'
+import React, { Fragment, useState, useEffect, memo } from 'react'
+import { useSearchQuotes } from '../hooks/useQuotes'
+import QuoteItem from './QuoteItem'
+import ViewportBlock from './ViewportBlock'
+import Button from './Button'
 import Loading from './Loading'
 
 function QuoteChunk({ params, onScrollFire }) {
+  const [hasFired, setHasFired] = useState(false)
+  const { quotes } = useSearchQuotes(params)
+
+  if (!quotes || !quotes.length) {
+    return (
+      <div className="twelve columns">
+        <Loading />
+      </div>
+    )
+  }
+
+  const onVisable = () => {
+    setHasFired(true)
+    onScrollFire()
+  }
+
   return (
-    <Suspense
-      fallback={
+    <Fragment>
+      {
+        quotes.map((quote) => {
+          return (
+            <QuoteItem
+              key={quote.id}
+              {...quote}
+            />
+          )
+        })
+      }
+      {
+        !hasFired &&
         <div className="twelve columns">
-          <Loading />
+          <Button
+            onClick={onVisable}
+            primary
+          >
+            Load More
+          </Button>
         </div>
       }
-      maxDuration={500}
-    >
-      <QuoteQueryChunk
-        params={params}
-        onScrollFire={onScrollFire}
+      <ViewportBlock
+        onVisable={onVisable}
       />
-    </Suspense>
+    </Fragment>
   )
 }
 

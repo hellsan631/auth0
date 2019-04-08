@@ -2,7 +2,7 @@ export default class EasyFetch {
   static addQueryStringToUrl(url, params) {
     let queryString = ''
     for (let key in params) {
-      if (params.hasOwnProperty(key)) {
+      if (params.hasOwnProperty(key) && typeof params[key] !== 'undefined') {
         let value = params[key]
         queryString += `${encodeURIComponent(key)}=${encodeURIComponent(value)}&`
       }
