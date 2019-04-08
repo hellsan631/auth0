@@ -19,7 +19,7 @@ export default function SearchBar({
       <div className="nine columns">
         <label htmlFor="search">Search</label>
         <input
-          type="text"
+          type="search"
           value={search}
           onChange={onInputChange}
           placeholder={placeholder}

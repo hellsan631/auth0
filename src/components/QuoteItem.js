@@ -6,12 +6,12 @@ export default function QuoteItem({ id, text, authorName }) {
     <div
       className="twelve columns"
     >
-      <div>"{text}"</div>
-      <div
+      <blockquote>"{text}"</blockquote>
+      <cite
         className="u-pull-right"
       >
         - {authorName || 'Anonymous'}
-      </div>
+      </cite>
     </div>
   )
 }
