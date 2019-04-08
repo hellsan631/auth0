@@ -5,16 +5,24 @@ import ViewportBlock from './ViewportBlock'
 import Button from './Button'
 import Loading from './Loading'
 
-function QuoteChunk({ params, onScrollFire }) {
+function QuoteChunk({ page, params, onScrollFire }) {
   const [hasFired, setHasFired] = useState(false)
-  const { quotes } = useSearchQuotes(params)
+  const { quotes } = useSearchQuotes(params, page)
+  useEffect(() => {
+    console.log('params changed')
+  }, [params])
 
-  if (!quotes || !quotes.length) {
+  if (quotes === false) {
     return (
       <div className="twelve columns">
         <Loading />
       </div>
     )
+  }
+
+  // If we've reached the end of the list
+  if (!quotes.length) {
+    return null
   }
 
   const onVisable = () => {
