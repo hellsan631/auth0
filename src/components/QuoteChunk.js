@@ -8,9 +8,6 @@ import Loading from './Loading'
 function QuoteChunk({ page, params, onScrollFire }) {
   const [hasFired, setHasFired] = useState(false)
   const { quotes } = useSearchQuotes(params, page)
-  useEffect(() => {
-    console.log('params changed')
-  }, [params])
 
   if (quotes === false) {
     return (

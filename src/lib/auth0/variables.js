@@ -11,8 +11,6 @@ const getHost = () => {
   return window.location.origin
 }
 
-console.log(getHost())
-
 export const AUTH_CONFIG = {
   database: 'Username-Password-Authentication',
   domain: 'targetproof.auth0.com',
