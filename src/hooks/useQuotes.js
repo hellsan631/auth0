@@ -1,15 +1,18 @@
-import { useEffect } from 'react'
-import promiseResource from './promiseResource'
+import { useEffect, useState, useMemo } from 'react'
 import { search } from '../lib/Quote'
+import EasyFetch from '../lib/EasyFetch'
+import cancelableResource from './cancelableResource'
+import promiseResource from './promiseResource'
 
 export function useSearchQuotes(params) {
   const uid = `get-search-quotes-${JSON.stringify(params)}`
-  const promise = async () => {
-    return await search(params)
-  }
+  const [quotes, setQuotes] = useState(false)
+  const searchPromise = useMemo(() => {
+    return search(params)
+  }, [params])
 
-  const [{ results }, resource] = promiseResource(
-      promise,
+  const [promise, resource] = cancelableResource(
+      searchPromise,
       uid,
   )
 
@@ -17,5 +20,15 @@ export function useSearchQuotes(params) {
     return () => resource.cleanup()
   }, [params])
 
-  return results
+  promise
+      .then(({ results }) => {
+        setQuotes(results)
+      })
+      .catch((error) => {
+        if (error.message !== 'The user aborted a request.') {
+          throw error
+        }
+      })
+
+  return { quotes, resource }
 }

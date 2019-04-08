@@ -1,13 +1,13 @@
-import React, { Fragment, useState, memo } from 'react'
+import React, { Fragment, useState, useEffect, memo } from 'react'
 import { useSearchQuotes } from '../hooks/useQuotes'
 import QuoteItem from './QuoteItem'
 import ViewportBlock from './ViewportBlock'
-import Button from './Button';
+import Button from './Button'
 
 function QuoteQueryChunk({ params, onScrollFire }) {
   const [hasFired, setHasFired] = useState(false)
-  const quotes = useSearchQuotes(params)
-  if (!quotes || !quotes.length) {
+  const { loading, quotes } = useSearchQuotes(params)
+  if (loading || !quotes || !quotes.length) {
     return null
   }
 

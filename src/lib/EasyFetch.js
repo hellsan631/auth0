@@ -48,4 +48,13 @@ export default class EasyFetch {
     const response = await this.getRequest(url, options)
     return await this.parseResponse(response)
   }
+
+  static cancelable(url, options) {
+    const request = this.getRequest(url, options)
+    const prom = request.then((response) => this.parseResponse(response))
+    prom.cancel = () => {
+      request.controller.abort()
+    }
+    return prom
+  }
 }
