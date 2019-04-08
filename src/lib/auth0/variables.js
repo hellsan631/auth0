@@ -7,12 +7,18 @@ const AUTH_SCOPES = [
   'profile',
 ]
 
+const getHost = () => {
+  return window.location.origin
+}
+
+console.log(getHost())
+
 export const AUTH_CONFIG = {
   database: 'Username-Password-Authentication',
   domain: 'targetproof.auth0.com',
   clientID: 'im66rJznvmvjLaEar4VwH45YmW76zU5O',
-  callbackUrl: 'http://localhost:3000/callback',
-  logoutUrl: 'http://localhost:3000/home',
+  callbackUrl: `${getHost()}/callback`,
+  logoutUrl: `${getHost()}/home`,
   scopes: AUTH_SCOPES.join(' '),
   defaultRoute: '/home',
   loginRoute: '/my-quotes',
