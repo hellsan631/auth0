@@ -8,7 +8,7 @@
     "flow-bin": "0.95.1"
   },
   "dependencies": {
-    "auth0-lock": "^11.14.1",
+    "auth0-lock": "11.14.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-on-screen": "2.1.1",
@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "flow": "flow",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer build/static/js/2*.js"
   },
   "eslintConfig": {
     "extends": "react-app"

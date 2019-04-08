@@ -17,7 +17,7 @@ const promiseResource = (thenable, uid) => {
 
   // Check to see if the uid matches a request already in cache
   if (promises[uid]) {
-    const resource = promises[uid];
+    const resource = promises[uid]
 
     // If an error occurred.
     if (resource.hasOwnProperty('error')) {
@@ -46,17 +46,17 @@ const promiseResource = (thenable, uid) => {
     // Allow cleanup to occur for component unmounts
     cleanup: () => {
       if (promises[uid]) {
-        delete promises[uid];
+        delete promises[uid]
       }
     },
     uid,
   };
 
   // Add promise to cache
-  promises[uid] = resource;
+  promises[uid] = resource
 
   // Throw new promise
-  throw resource.promise;
+  throw resource.promise
 }
 
-export default promiseResource;
+export default promiseResource

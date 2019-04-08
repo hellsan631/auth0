@@ -1,4 +1,4 @@
-import React, { Component, lazy } from 'react'
+import React, { Component } from 'react'
 import './App.css';
 import { UserProvider } from './context/UserContext';
 import Routes from './routes';

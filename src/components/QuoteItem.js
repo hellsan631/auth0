@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import { useAllQuotes } from '../hooks/useQuotes'
+import React from 'react'
 
 export default function QuoteItem({ id, text, authorName }) {
   return (

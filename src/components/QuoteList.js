@@ -1,29 +1,16 @@
-import React, { Fragment, Suspense, useState, memo, useMemo, useEffect, useCallback } from 'react'
+import React, { Fragment, memo, useMemo } from 'react'
 import QuoteChunk from './QuoteChunk'
+import usePagedArray from '../hooks/usePagedArray'
 
-function QuoteList({ page = 1, pageSize, authorName, text, sortBy }) {
-  const [currentPage, setCurrentPage] = useState(page)
-  const [pageArray, setPageArray] = useState([{ page }])
+function QuoteList({ pageSize, authorName, text, sortBy, startingPage = 1 }) {
+  const memoizedFields = [pageSize, authorName, text, sortBy]
   const params = useMemo(() => {
     return { authorName, text, sortBy, pageSize }
-  }, [authorName, text, sortBy, pageSize])
-
-  const handleIncrementPage = useCallback(() => {
-    setPageArray((pages) => {
-      const currentPageNumber = pages[pages.length - 1].page;
-      return [
-        ...pages,
-        { page: currentPageNumber + 1 },
-      ]
-    })
-    setCurrentPage((current) => current + 1)
-  }, [])
-
-  useEffect(() => {
-    if (pageArray.length > 1) {
-      setPageArray([{ page }])
-    }
-  }, [authorName, text, sortBy, pageSize])
+  }, memoizedFields)
+  const [pageArray, handleIncrementPage] = usePagedArray(
+    memoizedFields,
+    startingPage,
+  )
 
   return (
     <Fragment>

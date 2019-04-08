@@ -1,6 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
 import { search } from '../lib/Quote'
-import EasyFetch from '../lib/EasyFetch'
 import cancelableResource from './cancelableResource'
 
 export function useSearchQuotes(params, page) {

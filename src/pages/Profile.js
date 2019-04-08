@@ -1,12 +1,8 @@
-import React, { Fragment } from 'react'
-import useUser from '../hooks/useUser'
-import Button from '../components/Button'
+import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import ChangePassword from '../components/ChangePassword'
 
 export default function Profile() {
-  const { state, loading, dispatch } = useUser()
-
   return (
     <div className="container">
       <ToastContainer />

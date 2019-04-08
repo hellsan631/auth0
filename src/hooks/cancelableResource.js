@@ -3,12 +3,12 @@
 const promises = {}
 
 /**
- * Throws is a promise for React Suspense to catch.
- * When that promise results, returns the value to use synchronously
+ * When you make a fetch request, and you want to cancel that request, this allows you to
+ * cache the promise and provides an api for canceling the fetch promise
  *
  * @param {Promise} cancelable Premise-based resource whose value will be synchronously given
  * @param {string} uid Unique Id to avoid duplicate promises
- * @return {Array} [resource.value, resource]
+ * @return {Array} [resource.promise, resource]
  */
 const cancelableResource = (cancelable, uid) => {
   if (!uid) {
@@ -19,7 +19,7 @@ const cancelableResource = (cancelable, uid) => {
   if (promises[uid]) {
     const resource = promises[uid]
 
-    // If nothing has changed.
+    // If promise already exists
     return [resource.promise, resource]
   }
 
@@ -40,9 +40,10 @@ const cancelableResource = (cancelable, uid) => {
 
   // Add promise to cache
   promises[uid] = resource
+  // Make sure the correct reference is given to the cancel method
   promises[uid].cancel = cancelable.cancel
 
-  // Throw new promise
+  // return new promise
   return [resource.promise, resource]
 }
 

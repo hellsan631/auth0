@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react'
-import Button from './Button';
+import React, { useState } from 'react'
 
 export default function SearchBar({
   onChange,

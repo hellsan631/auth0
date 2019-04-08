@@ -32,7 +32,7 @@ export const RouteList = [
 
 export default function Routes() {
   const [hydrated, setHydrated] = useState(false)
-  const { state, dispatch } = useUser()
+  const { dispatch } = useUser()
 
   if (!hydrated) {
     dispatch({ type: 'HYDRATE' })
