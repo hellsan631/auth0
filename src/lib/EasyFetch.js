@@ -62,7 +62,7 @@ export default class EasyFetch {
 
   static cancelable(url, options) {
     const normalizedOptions = this.normalizedOptions(options)
-    const request = this.getRequest(url, options)
+    const request = this.getRequest(url, normalizedOptions)
     const prom = request.then((response) => this.parseResponse(response))
 
     // Bind abort to a function on the promise, allowing us to cancel the request

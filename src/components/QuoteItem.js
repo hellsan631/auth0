@@ -14,7 +14,7 @@ const getRandomGradient = (id) => {
 
 const QuoteItemContainer = styled.div`
   position: relative;
-  padding: 1.5em;
+  padding: 1.5em 1.4em;
   border-radius: 5px;
   color: #fff;
   background-image: ${({ backgroundImage }) => backgroundImage};
@@ -38,9 +38,12 @@ const QuoteItemContainer = styled.div`
   }
 
   &:hover {
-    transform: scale(1.034);
+    transform: scale(1.044);
     &:after {
       opacity: 1;
+    }
+    blockquote {
+      transform: scale(0.982);
     }
   }
 
@@ -53,6 +56,7 @@ const QuoteItemContainer = styled.div`
     margin-right: 0;
     margin-top: 0;
     font-smoothing: antialiased !important;
+    transition: all cubic-bezier(.47,1.64,.41,.8) 400ms;
   }
 `
 

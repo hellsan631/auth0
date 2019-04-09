@@ -1,7 +1,6 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
 import Button from '../components/Button'
-import useUserContext from '../hooks/useUserContext'
 
 export default function NewQuoteInput({ disabled, onSubmit }) {
   const [text, handleTextChange] = useInput('')

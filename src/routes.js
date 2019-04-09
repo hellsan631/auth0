@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
-import logo from './logo.svg'
 import history from './lib/history'
 import HeaderBar from './components/HeaderBar'
 import useUserContext from './hooks/useUserContext'

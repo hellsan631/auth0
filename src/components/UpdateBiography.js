@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import useUserContext from '../hooks/useUserContext'
-import Button from '../components/Button'
 import useDebounce from 'react-use/lib/useDebounce'
 
 export default function UpdateBiography({ maxLength = 250 }) {
-  const { state: { user }, loading, dispatch } = useUserContext()
+  const { state: { user }, dispatch } = useUserContext()
   const [biography, setBiography] = useState(user.user_metadata.biography || '')
   const handleBiographyChange = ({ target: { value } }) => {
     setBiography(value)
