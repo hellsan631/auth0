@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Loading = styled.div`
   width: 50px;
   height: 50px;
-  margin: 2em auto;
+  margin: 4em auto;
   position: relative;
 
   &:before {

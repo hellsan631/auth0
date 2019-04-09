@@ -35,6 +35,7 @@ function QuoteChunk({ page, params, onScrollFire }) {
             <QuoteItem
               key={quote.id}
               {...quote}
+              className="twelve columns"
             />
           )
         })

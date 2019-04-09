@@ -31,7 +31,7 @@ export default function SearchBar({
           onChange={onInputChange}
           placeholder={placeholder}
           id="search"
-          style={{ width: '80%' }}
+          className="u-full-width"
         />
       </div>
     </div>

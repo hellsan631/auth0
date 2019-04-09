@@ -9,6 +9,7 @@ import history from './lib/history'
 import HeaderBar from './components/HeaderBar'
 import useUserContext from './hooks/useUserContext'
 import PrivateRoute from './components/PrivateRoute';
+import Loading from './components/Loading';
 
 export const RouteList = [
   {
@@ -56,7 +57,7 @@ export default function Routes() {
       <Router history={history}>
         <HeaderBar />
         <Suspense
-          fallback={<img src={logo} className="App-logo" alt="logo" />}
+          fallback={<Loading />}
         >
           <Switch>
             {
