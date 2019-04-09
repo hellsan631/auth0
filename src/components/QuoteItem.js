@@ -6,10 +6,10 @@ import { toast } from 'react-toastify'
 const getRandomGradient = (id) => {
   const grads = [
     // 'linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%)',
-    'linear-gradient( 135deg, #F97794 10%, #623AA2 100%)',
+    'linear-gradient( 315deg, #F97794 -60%, #623AA2 80%)',
     // 'linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%)',
     // 'linear-gradient( -135deg, #3B2667 10%, #BC78EC 100%)',
-    'linear-gradient( 135deg, #97ABFF 10%, #123597 100%)',
+    'linear-gradient( 135deg, #97ABFF -10%, #123597 140%)',
     // 'linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%)',
     // 'linear-gradient( 135deg, #FF7AF5 10%, #513162 100%)',
   ];
