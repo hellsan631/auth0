@@ -5,6 +5,8 @@ import { useState } from 'react'
 type DispatchProps = {
   type: string,
   payload: any,
+  onSuccess: Function,
+  onError: Function
 }
 
 type ReducerProps = {
@@ -20,12 +22,24 @@ function useAsyncReducer(
   const [loading, setLoading] = useState(false)
   const [state, setState] = useState(initialState)
 
-  const dispatch = async (props: DispatchProps) => {
+  const dispatch = async (
+    { 
+      onSuccess,
+      onError = (err) => console.log(err),
+      ...props,
+    }: DispatchProps
+  ) => {
     setLoading(true)
     try {
-      setState(await asyncFn(state, props))
+      const results = await asyncFn(state, props)
+      setState(results)
+      if (onSuccess) {
+        onSuccess(results)
+      }
     } catch (err) {
-      console.log(err)
+      if (onError) {
+        onError(err)
+      }
     }
     setLoading(false)
   }

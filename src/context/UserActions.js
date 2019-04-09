@@ -18,10 +18,10 @@ const fetchAndCombineUserData = async (auth) => {
 export const handleAddQuote = async (payload, { user, auth }) => {
   try {
     const quote = await addQuote(payload)
-    console.log(quote)
-    return {
-      
-    }
+    const quotes = user.user_metadata.quotes.concat([quote])
+    const stateUpdates = await handleMetadataChange(auth, { quotes })
+    toast.success('Successfully added quote')
+    return stateUpdates
   } catch (error) {
     console.log(error)
     toast.error(error.message)

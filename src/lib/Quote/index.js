@@ -33,3 +33,20 @@ export async function getQuote(quoteId: string): Promise<Quote> {
   }
   return await EasyFetch.fetch(`${BASE_URL}/quotes/${quoteId}`)
 }
+
+export async function addQuote(quoteParams: QuotePost): Promise<Quote> {
+  if (!quoteParams.text) {
+    throw new Error('Quote Text Required')
+  }
+  if (!quoteParams.authorName) {
+    quoteParams.authorName = ''
+  }
+  
+  const id = Date.now()
+
+  return {
+    id,
+    ...quoteParams,
+  }
+}
+
