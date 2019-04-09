@@ -17,7 +17,7 @@ export default function NewQuoteInput({ disabled, onSubmit }) {
     <div className="row">
       <div className="twelve columns">
         <label htmlFor="text">Quote Text</label>
-        <textarea 
+        <textarea
           value={text}
           onChange={handleTextChange}
           placeholder="Funny"

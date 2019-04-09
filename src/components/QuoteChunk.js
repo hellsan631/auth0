@@ -17,8 +17,11 @@ function QuoteChunk({ page, params, onScrollFire }) {
     )
   }
 
-  // If we've reached the end of the list
-  if (!quotes.length) {
+  // If we've reached the end of the quotes API generated list
+  // page zero is an indication that quotes are coming from the user,
+  // which is a different data source.
+  // We want our infinite scroll to trigger to get results from the quotes apis as well.
+  if (!quotes.length && page !== 0) {
     return null
   }
 

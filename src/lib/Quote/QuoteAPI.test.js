@@ -1,4 +1,4 @@
-import { getAll, search, getQuote } from './Quote'
+import { getAll, search, getQuote } from './QuoteAPI'
 
 it('getAll', async () => {
   const { results } = await getAll()

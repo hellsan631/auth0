@@ -14,11 +14,11 @@ export default function SearchBar({
   }
 
   useDebounce(
-    () => {
-      onChange({ field: search, type: radio })
-    },
-    250,
-    [search]
+      () => {
+        onChange({ field: search, type: radio })
+      },
+      250,
+      [search]
   )
 
   return (

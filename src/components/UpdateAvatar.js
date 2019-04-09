@@ -4,7 +4,7 @@ import Button from '../components/Button'
 
 export default function UpdateAvatar() {
   const { state, loading, dispatch } = useUserContext()
-  
+
   return (
     <div className="row">
       <div className="four columns">

@@ -1,13 +1,16 @@
 import { useEffect, useState, useMemo } from 'react'
-import { search } from '../lib/Quote'
 import cancelableResource from './cancelableResource'
+import QuoteDatabase from '../lib/Quote/QuoteDatabase'
+import useUserContext from './useUserContext'
 
 export function useSearchQuotes(params, page) {
   const uid = `get-search-quotes-${JSON.stringify(params)}-${page}`
+  const { state: { user } } = useUserContext()
+  const auth = user ? { userId: user.user_id } : false
   const [quotes, setQuotes] = useState(false)
   const searchPromise = useMemo(() => {
-    return search({ ...params, page })
-  }, [params])
+    return QuoteDatabase.search({ ...params, page }, auth)
+  }, [params, user])
 
   const [promise, resource] = cancelableResource(
       searchPromise,

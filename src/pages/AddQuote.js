@@ -13,7 +13,7 @@ export default function AddQuote() {
     dispatch({
       type: 'ADD_QUOTE',
       payload,
-      success: () => setQuoteAdded(true)
+      success: () => setQuoteAdded(true),
     })
   }
 

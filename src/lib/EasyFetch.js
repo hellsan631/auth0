@@ -43,7 +43,7 @@ export default class EasyFetch {
     }
     return await response.text()
   }
-  
+
   static normalizedOptions(options) {
     let normalized = options
 

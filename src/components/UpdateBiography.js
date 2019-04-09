@@ -10,15 +10,15 @@ export default function UpdateBiography({ maxLength = 250 }) {
   }
 
   useDebounce(
-    () => {
-      if (user.user_metadata.biography !== biography) {
-        dispatch({ type: 'UPDATE_METADATA', payload: { biography } })
-      }
-    },
-    1000,
-    [biography]
+      () => {
+        if (user.user_metadata.biography !== biography) {
+          dispatch({ type: 'UPDATE_METADATA', payload: { biography } })
+        }
+      },
+      1000,
+      [biography],
   )
-  
+
   return (
     <div className="row">
       <div className="four columns">
@@ -26,11 +26,11 @@ export default function UpdateBiography({ maxLength = 250 }) {
       </div>
       <div className="eight columns">
         <label htmlFor="biography">Biography</label>
-        <textarea 
+        <textarea
           maxLength={maxLength}
           onChange={handleBiographyChange}
           value={biography}
-          className="u-full-width" 
+          className="u-full-width"
           placeholder={`Write a little something about yourself, ${user.name}`}
           id="biography"
         />

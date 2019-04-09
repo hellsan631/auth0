@@ -17,7 +17,9 @@ class Manager {
   getUser(userId) {
     return new Promise((resolve) => {
       this.api.getUser(userId, (err, userInfo) => {
-        if (err) return reject(err)
+        if (err) {
+          return reject(err)
+        }
 
         // If the user metadata doesn't exist, provide some default data
         if (!userInfo.user_metadata) {
@@ -37,7 +39,9 @@ class Manager {
   patchUserMetadata(userId, userMetadata) {
     return new Promise((resolve) => {
       this.api.patchUserMetadata(userId, userMetadata, (err, userInfo) => {
-        if (err) return reject(err)
+        if (err) {
+          return reject(err)
+        }
         resolve(userInfo)
       })
     })
