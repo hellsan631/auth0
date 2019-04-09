@@ -55,6 +55,10 @@ class Auth {
     return await Manager.getUser(userId)
   }
 
+  async updateUser({ sub: userId }, userMetadata) {
+    return await Manager.patchUserMetadata(userId, userMetadata)
+  }
+
   authorize() {
     return this.api.authorize()
   }

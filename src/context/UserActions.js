@@ -2,6 +2,7 @@ import history from '../lib/history'
 import { AUTH_CONFIG } from '../lib/auth0/variables'
 import Auth from '../lib/auth0/Auth'
 import { toast } from 'react-toastify'
+import { addQuote } from '../lib/Quote'
 
 const fetchAndCombineUserData = async (auth) => {
   if (!auth) {
@@ -11,6 +12,33 @@ const fetchAndCombineUserData = async (auth) => {
   return {
     auth,
     user: await Auth.getAllUserData(accessToken, idTokenPayload),
+  }
+}
+
+export const handleAddQuote = async (payload, { user, auth }) => {
+  try {
+    const quote = await addQuote(payload)
+    console.log(quote)
+    return {
+      
+    }
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message)
+    return {}
+  }
+}
+
+export const handleMetadataChange = async (auth, userMetadata) => {
+  try {
+    const { idTokenPayload } = auth
+    const user = await Auth.updateUser(idTokenPayload, userMetadata)
+    return {
+      user,
+    }
+  } catch (error) {
+    toast.error(error.message)
+    return {}
   }
 }
 

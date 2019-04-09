@@ -2,11 +2,11 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import useUser from '../hooks/useUser'
+import useUserContext from '../hooks/useUserContext'
 import React from 'react'
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-  const { state } = useUser()
+  const { state } = useUserContext()
   if (!state.hydrated) {
     return null
   }

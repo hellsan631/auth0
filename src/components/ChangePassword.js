@@ -1,9 +1,9 @@
 import React from 'react'
-import useUser from '../hooks/useUser'
+import useUserContext from '../hooks/useUserContext'
 import Button from '../components/Button'
 
 export default function ChangePassword() {
-  const { state, loading, dispatch } = useUser()
+  const { state, loading, dispatch } = useUserContext()
   const changePassword = () => dispatch({ type: 'CHANGE_PASSWORD' })
 
   return (

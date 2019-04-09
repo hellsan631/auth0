@@ -1,9 +1,12 @@
 // @flow
 
-export type Quote = {
-  id: number,
+export type QuotePost = {
   authorName: string,
   text: string,
+}
+
+export type Quote = QuotePost & {
+  id: number,
 }
 
 export type QuotePagination = {

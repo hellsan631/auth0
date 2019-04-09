@@ -1,9 +1,11 @@
 // @flow
+// Abstraction around the external endpoints of QuotesAPI
 
 import type {
   QuotePagination,
   QuoteResponse,
   QuoteParams,
+  QuotePost,
   Quote,
 } from './Quote.types'
 import EasyFetch from '../EasyFetch'
@@ -14,8 +16,8 @@ type SearchPromise = Promise & {
 
 const BASE_URL = 'https://auth0-exercise-quotes-api.herokuapp.com/api';
 
-export async function getAll(pagination?: QuotePagination): Promise<QuoteResponse> {
-  return await EasyFetch.fetch(`${BASE_URL}/quotes`, { params: pagination })
+export async function getAll(params?: QuotePagination): Promise<QuoteResponse> {
+  return await EasyFetch.fetch(`${BASE_URL}/quotes`, { params })
 }
 
 export function search(params: QuoteParams = {}): SearchPromise {

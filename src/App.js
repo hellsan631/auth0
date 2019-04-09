@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import './App.css';
-import { UserProvider } from './context/UserContext';
-import Routes from './routes';
+import { UserProvider } from './context/UserContext'
+import { QuoteProvider } from './context/QuoteContext'
+import Routes from './routes'
 
 class App extends Component {
   render() {
     return (
       <UserProvider>
-        <Routes />
+        <QuoteProvider>
+          <Routes />
+        </QuoteProvider>
       </UserProvider>
     );
   }

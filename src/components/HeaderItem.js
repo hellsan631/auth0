@@ -21,9 +21,9 @@ const HeaderItemContainer = styled.div`
   ${(props) => (props.isActive ? isActive : isNotActive)};
 `
 
-export default function HeaderItem({ title, path, isActive }) {
+export default function HeaderItem({ title, path, isActive, className }) {
   return (
-    <Link to={path}>
+    <Link to={path} className={className}>
       <HeaderItemContainer
         isActive={isActive}
       >

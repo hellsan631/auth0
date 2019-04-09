@@ -1,12 +1,12 @@
 import React from 'react';
 
 import loading from '../logo.svg'
-import useUser from '../hooks/useUser'
+import useUserContext from '../hooks/useUserContext'
 import { AUTH_CONFIG } from '../lib/auth0/variables'
 import history from '../lib/history'
 
 function Callback({ location }) {
-  const { state, dispatch } = useUser()
+  const { state, dispatch } = useUserContext()
 
   if (!state) {
     dispatch({ type: 'CALLBACK' })

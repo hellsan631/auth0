@@ -7,7 +7,7 @@ import {
 import logo from './logo.svg'
 import history from './lib/history'
 import HeaderBar from './components/HeaderBar'
-import useUser from './hooks/useUser'
+import useUserContext from './hooks/useUserContext'
 import PrivateRoute from './components/PrivateRoute';
 
 export const RouteList = [
@@ -15,7 +15,19 @@ export const RouteList = [
     path: '/profile',
     component: lazy(() => import('./pages/Profile')),
     title: 'Profile',
+    order: 3,
+    authenticated: true,
+  },
+  {
+    path: '/my-quotes',
+    component: lazy(() => import('./pages/MyQuotes')),
+    title: 'My Quotes',
     order: 2,
+    authenticated: true,
+  },
+  {
+    path: '/add-quote',
+    component: lazy(() => import('./pages/AddQuote')),
     authenticated: true,
   },
   {
@@ -32,7 +44,7 @@ export const RouteList = [
 
 export default function Routes() {
   const [hydrated, setHydrated] = useState(false)
-  const { dispatch } = useUser()
+  const { dispatch } = useUserContext()
 
   if (!hydrated) {
     dispatch({ type: 'HYDRATE' })

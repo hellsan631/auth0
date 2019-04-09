@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React from 'react'
-import useUser from '../hooks/useUser'
+import useUserContext from '../hooks/useUserContext'
 import Button from './Button'
 import { withRouter } from 'react-router-dom'
 import { RouteList } from '../routes'
@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
 
 function HeaderBar({ location, match }) {
   // console.log(location, match)
-  const { state, loading, dispatch } = useUser()
+  const { state, loading, dispatch } = useUserContext()
 
   const loginClick = () => dispatch({ type: 'LOGIN' })
   const logoutClick = () => dispatch({ type: 'LOGOUT' })
