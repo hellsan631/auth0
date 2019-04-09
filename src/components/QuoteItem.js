@@ -5,13 +5,8 @@ import { toast } from 'react-toastify'
 
 const getRandomGradient = (id) => {
   const grads = [
-    // 'linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%)',
     'linear-gradient( 315deg, #F97794 -60%, #623AA2 80%)',
-    // 'linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%)',
-    // 'linear-gradient( -135deg, #3B2667 10%, #BC78EC 100%)',
     'linear-gradient( 135deg, #97ABFF -10%, #123597 140%)',
-    // 'linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%)',
-    // 'linear-gradient( 135deg, #FF7AF5 10%, #513162 100%)',
   ];
 
   return grads[Math.round(id % grads.length)]
@@ -26,7 +21,7 @@ const QuoteItemContainer = styled.div`
   transition: all cubic-bezier(.47,1.64,.41,.8) 600ms;
   box-shadow: 0 1px 5px rgba(0,0,0,0.15);
   cursor: pointer;
-
+  
   &::after {
     content: '';
     position: absolute;
@@ -43,7 +38,7 @@ const QuoteItemContainer = styled.div`
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.043);
     &:after {
       opacity: 1;
     }
@@ -60,7 +55,7 @@ const QuoteItemContainer = styled.div`
   }
 `
 
-export default function QuoteItem({ id, text, authorName, className }) {
+export default function QuoteItem({ id, text, authorName, className, index }) {
   return (
     <CopyToClipboard
       text={`${text} - ${authorName || 'Anonymous'}`}
@@ -68,7 +63,7 @@ export default function QuoteItem({ id, text, authorName, className }) {
     >
       <QuoteItemContainer
         className={className}
-        backgroundImage={getRandomGradient(id)}
+        backgroundImage={getRandomGradient(typeof index === 'number' ? index : id)}
       >
         <blockquote>"{text}"</blockquote>
         <cite

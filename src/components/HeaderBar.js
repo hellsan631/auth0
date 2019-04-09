@@ -7,7 +7,7 @@ import { RouteList } from '../routes'
 import HeaderItem from './HeaderItem'
 
 const HeaderContainer = styled.div`
-  padding: 1em;
+  padding: 1em 0;
 
   .link-container {
     flex-direction: row;

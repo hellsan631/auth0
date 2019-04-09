@@ -30,12 +30,13 @@ function QuoteChunk({ page, params, onScrollFire }) {
   return (
     <Fragment>
       {
-        quotes.map((quote) => {
+        quotes.map((quote, index) => {
           return (
             <QuoteItem
               key={quote.id}
               {...quote}
               className="twelve columns"
+              index={index}
             />
           )
         })
