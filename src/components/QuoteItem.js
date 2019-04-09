@@ -18,7 +18,7 @@ const QuoteItemContainer = styled.div`
   border-radius: 5px;
   color: #fff;
   background-image: ${({ backgroundImage }) => backgroundImage};
-  transition: all cubic-bezier(.47,1.64,.41,.8) 600ms;
+  transition: all cubic-bezier(.47,1.64,.41,.8) 400ms;
   box-shadow: 0 1px 5px rgba(0,0,0,0.15);
   cursor: pointer;
   
@@ -38,7 +38,7 @@ const QuoteItemContainer = styled.div`
   }
 
   &:hover {
-    transform: scale(1.043);
+    transform: scale(1.034);
     &:after {
       opacity: 1;
     }
@@ -52,6 +52,7 @@ const QuoteItemContainer = styled.div`
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
+    font-smoothing: antialiased !important;
   }
 `
 
