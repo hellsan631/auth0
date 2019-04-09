@@ -5,8 +5,8 @@ import { toast } from 'react-toastify'
 
 const getRandomGradient = (id) => {
   const grads = [
-    'linear-gradient( 315deg, #F97794 -60%, #623AA2 80%)',
     'linear-gradient( 135deg, #97ABFF -10%, #123597 140%)',
+    'linear-gradient( 315deg, #F97794 -60%, #623AA2 80%)',
   ];
 
   return grads[Math.round(id % grads.length)]
