@@ -5,11 +5,13 @@ import { toast } from 'react-toastify'
 
 const getRandomGradient = (id) => {
   const grads = [
+    // 'linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%)',
     'linear-gradient( 135deg, #F97794 10%, #623AA2 100%)',
-     // 'linear-gradient( 135deg, #F05F57 10%, #360940 100%)',
-    'linear-gradient( -135deg, #3B2667 10%, #BC78EC 100%)',
-    'linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%)',
-    'linear-gradient( 135deg, #FF7AF5 10%, #513162 100%)',
+    // 'linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%)',
+    // 'linear-gradient( -135deg, #3B2667 10%, #BC78EC 100%)',
+    'linear-gradient( 135deg, #97ABFF 10%, #123597 100%)',
+    // 'linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%)',
+    // 'linear-gradient( 135deg, #FF7AF5 10%, #513162 100%)',
   ];
 
   return grads[Math.round(id % grads.length)]
@@ -17,7 +19,7 @@ const getRandomGradient = (id) => {
 
 const QuoteItemContainer = styled.div`
   position: relative;
-  padding: 1em;
+  padding: 1.5em;
   border-radius: 5px;
   color: #fff;
   background-image: ${({ backgroundImage }) => backgroundImage};
