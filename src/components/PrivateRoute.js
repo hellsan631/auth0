@@ -7,9 +7,6 @@ import React from 'react'
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { state } = useUserContext()
-  if (!state.hydrated) {
-    return null
-  }
   return (
     <Route
       {...rest}

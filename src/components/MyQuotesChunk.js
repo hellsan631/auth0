@@ -1,4 +1,4 @@
-import React, { Fragment, useState, memo } from 'react'
+import React, { Fragment, memo } from 'react'
 import useQuotes from '../hooks/useQuotes'
 import QuoteItem from './QuoteItem'
 import InfiniteLoader from './InfiniteLoader'
