@@ -1,14 +1,12 @@
 import React, {
-  Fragment, useState, memo,
+  Fragment, memo,
 } from 'react'
 import useSearchQuotes from '../hooks/useSearchQuotes'
 import QuoteItem from './QuoteItem'
-import ViewportBlock from './ViewportBlock'
-import Button from './Button'
 import Loading from './Loading'
+import InfiniteLoader from './InfiniteLoader'
 
 function QuoteChunk({ page, params, onScrollFire }) {
-  const [hasFired, setHasFired] = useState(false)
   const { quotes } = useSearchQuotes(params, page)
 
   if (quotes === false) {
@@ -19,17 +17,8 @@ function QuoteChunk({ page, params, onScrollFire }) {
     )
   }
 
-  // If we've reached the end of the quotes API generated list
-  // page zero is an indication that quotes are coming from the user,
-  // which is a different data source.
-  // We want our infinite scroll to trigger to get results from the quotes apis as well.
   if (!quotes.length) {
     return null
-  }
-
-  const onVisable = () => {
-    setHasFired(true)
-    onScrollFire()
   }
 
   return (
@@ -46,19 +35,8 @@ function QuoteChunk({ page, params, onScrollFire }) {
           )
         })
       }
-      {
-        !hasFired &&
-        <div className="twelve columns">
-          <Button
-            onClick={onVisable}
-            primary
-          >
-            Load More
-          </Button>
-        </div>
-      }
-      <ViewportBlock
-        onVisable={onVisable}
+      <InfiniteLoader
+        onScrollFire={onScrollFire}
       />
     </Fragment>
   )

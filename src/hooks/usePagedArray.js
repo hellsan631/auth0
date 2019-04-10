@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-function usePagedArray(memoizedFields, page) {
+function usePagedArray(page, memoizedFields) {
   const [pageArray, setPageArray] = useState([{ page }])
 
   // Minimizes the callback used to increment the page array

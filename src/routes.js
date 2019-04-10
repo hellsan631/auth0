@@ -1,6 +1,5 @@
 import React, {
   Suspense, lazy, Fragment, useState, memo,
-  unstable_ConcurrentMode as ConcurrentMode,
 } from 'react'
 import {
   Router,

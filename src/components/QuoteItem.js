@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { toast } from 'react-toastify'
 import {
@@ -16,7 +16,7 @@ const getRandomGradient = (id) => {
   return grads[Math.round(id % grads.length)]
 }
 
-export default function QuoteItem({ id, text, authorName, userId, className, index }) {
+function QuoteItem({ id, text, authorName, userId, className, index }) {
   const { state: { user }, dispatch } = useUserContext()
   const [editQuote, setEditQuote] = useState(false)
   const [removed, setRemoved] = useState(false)
@@ -93,6 +93,7 @@ export default function QuoteItem({ id, text, authorName, userId, className, ind
         }
       </QuoteItemContainer>
     </CopyToClipboard>
-
   )
 }
+
+export default memo(QuoteItem)

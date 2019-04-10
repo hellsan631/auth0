@@ -1,20 +1,13 @@
 import React, { Fragment, useState, memo } from 'react'
 import useQuotes from '../hooks/useQuotes'
 import QuoteItem from './QuoteItem'
-import ViewportBlock from './ViewportBlock'
-import Button from './Button'
+import InfiniteLoader from './InfiniteLoader'
 
 function MyQuotesChunk({ page, params, onScrollFire }) {
-  const [hasFired, setHasFired] = useState(false)
   const quotes = useQuotes(params, page)
 
   if (!quotes.length) {
     return null
-  }
-
-  const onVisable = () => {
-    setHasFired(true)
-    onScrollFire()
   }
 
   return (
@@ -31,19 +24,8 @@ function MyQuotesChunk({ page, params, onScrollFire }) {
           )
         })
       }
-      {
-        !hasFired &&
-        <div className="twelve columns">
-          <Button
-            onClick={onVisable}
-            primary
-          >
-            Load More
-          </Button>
-        </div>
-      }
-      <ViewportBlock
-        onVisable={onVisable}
+      <InfiniteLoader
+        onScrollFire={onScrollFire}
       />
     </Fragment>
   )

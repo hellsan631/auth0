@@ -5,8 +5,8 @@ import usePagedArray from '../hooks/usePagedArray'
 
 function MyQuotesList({ params, onScrollFire }) {
   const [pageArray, handleIncrementPage] = usePagedArray(
-      params,
       1,
+      params,
   )
   return (
     <Fragment>

@@ -1,9 +1,8 @@
 import React from 'react';
-
-import loading from '../logo.svg'
 import useUserContext from '../hooks/useUserContext'
 import { AUTH_CONFIG } from '../lib/auth0/variables'
 import history from '../lib/history'
+import Loading from '../components/Loading'
 
 function Callback({ location }) {
   const { state, dispatch } = useUserContext()
@@ -29,7 +28,7 @@ function Callback({ location }) {
 
   return (
     <div style={style}>
-      <img src={loading} alt="loading"/>
+      <Loading />
     </div>
   );
 }

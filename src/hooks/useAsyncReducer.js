@@ -6,7 +6,7 @@ type DispatchProps = {
   type: string,
   payload: any,
   onSuccess: Function,
-  onError: Function
+  onError: Function,
 }
 
 type ReducerProps = {
@@ -23,10 +23,10 @@ function useAsyncReducer(
   const [state, setState] = useState(initialState)
 
   const dispatch = async (
-    { 
+    {
       onSuccess,
-      onError = (err) => console.log(err),
-      ...props,
+      onError = (err: any): any => console.log(err),
+      ...props
     }: DispatchProps
   ) => {
     setLoading(true)

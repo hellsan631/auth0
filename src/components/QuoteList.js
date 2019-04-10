@@ -10,8 +10,8 @@ function QuoteList({ pageSize, authorName, text, sortBy, startingPage = 1 }) {
     return { authorName, text, sortBy, pageSize }
   }, memoizedFields)
   const [pageArray, handleIncrementPage] = usePagedArray(
-      memoizedFields,
       startingPage,
+      memoizedFields,
   )
 
   return (
