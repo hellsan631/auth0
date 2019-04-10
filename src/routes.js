@@ -44,11 +44,17 @@ export const RouteList = [
 
 export default function Routes() {
   const [hydrated, setHydrated] = useState(false)
-  const { dispatch } = useUserContext()
+  const { state, dispatch } = useUserContext()
 
   if (!hydrated) {
-    dispatch({ type: 'HYDRATE' })
+    dispatch({
+      type: 'HYDRATE',
+    })
     setHydrated(true)
+  }
+
+  if (!state.hydrated) {
+    return (<Loading />)
   }
 
   return (

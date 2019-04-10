@@ -3,6 +3,7 @@
 export type QuotePost = {
   authorName: string,
   text: string,
+  userId?: string,
 }
 
 export type Quote = QuotePost & {
@@ -22,10 +23,11 @@ export type QuoteParams = QuotePagnation & {
 
 export type QuoteResponse = {
   results: Array<Quote>, // matched results per query
-  pagination: {
-    page: number, // returned `page` number of request
-    pageSize: number, // returned `pageSize` of the request
-    pageCount: number, // total count of pages for query
-    rowCount: number, // total number of rows (elements) for query
-  },
+  // Removed when abstraction was placed in
+  // pagination: {
+  //   page: number, // returned `page` number of request
+  //   pageSize: number, // returned `pageSize` of the request
+  //   pageCount: number, // total count of pages for query
+  //   rowCount: number, // total number of rows (elements) for query
+  // },
 }

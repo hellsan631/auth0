@@ -14,24 +14,13 @@ export type CancelablePromise = Promise & {
   cancel: Function,
 }
 
-const BASE_URL = 'https://auth0-exercise-quotes-api.herokuapp.com/api';
-
-export async function getAll(params?: QuotePagination): Promise<QuoteResponse> {
-  return await EasyFetch.fetch(`${BASE_URL}/quotes`, { params })
-}
+const BASE_URL = 'https://hellsan631.api.stdlib.com/quotes@dev/';
 
 export function search(params: QuoteParams = {}): CancelablePromise<QuoteResponse> {
   if (Object.keys(params).length === 0) {
     throw new Error('Search Requires At Least One Parameter')
   }
-  return EasyFetch.cancelable(`${BASE_URL}/quotes`, { params })
-}
-
-export async function getQuote(quoteId: string): Promise<Quote> {
-  if (!quoteId) {
-    throw new Error('Quote ID Required')
-  }
-  return await EasyFetch.fetch(`${BASE_URL}/quotes/${quoteId}`)
+  return EasyFetch.cancelable(`${BASE_URL}`, { params })
 }
 
 export async function addQuote(quoteParams: QuotePost): Promise<Quote> {

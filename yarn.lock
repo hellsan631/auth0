@@ -7615,7 +7615,7 @@ react-transition-group@^2.6.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@^8.1.0:
+react-use@8.1.0:
   version "8.1.0"
   resolved "https://registry.npmjs.org/react-use/-/react-use-8.1.0.tgz#046d482e765cc6758278000034e99078e6740649"
   dependencies:

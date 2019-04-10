@@ -16,7 +16,7 @@
     "react-router-dom": "5.0.0",
     "react-scripts": "2.1.8",
     "react-toastify": "5.0.0-rc.6",
-    "react-use": "^8.1.0",
+    "react-use": "8.1.0",
     "styled-components": "4.2.0"
   },
   "scripts": {

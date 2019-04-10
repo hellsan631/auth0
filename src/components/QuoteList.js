@@ -3,11 +3,7 @@ import QuoteChunk from './QuoteChunk'
 import usePagedArray from '../hooks/usePagedArray'
 import useUserContext from '../hooks/useUserContext'
 
-function QuoteList({ pageSize, authorName, text, sortBy }) {
-  const { state: { user } } = useUserContext()
-  // if the user is authenticated, we want to show their quotes first,
-  // which starts on page 0
-  const startingPage = user ? 0 : 1;
+function QuoteList({ pageSize, authorName, text, sortBy, startingPage = 1 }) {
   const memoizedFields = [pageSize, authorName, text, sortBy]
   const params = useMemo(() => {
     return { authorName, text, sortBy, pageSize }

@@ -19,7 +19,7 @@ const fetchAndCombineUserData = async (auth) => {
 export const handleAddQuote = async (payload, { user, auth }) => {
   try {
     const { sub: userId } = auth.idTokenPayload
-    await QuoteDatabase.add(payload, { userId })
+    await QuoteDatabase.add({ ...payload, userId })
     toast.success('Successfully added quote')
     return {}
   } catch (error) {

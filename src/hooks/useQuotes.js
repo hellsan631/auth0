@@ -1,35 +1,21 @@
-import { useEffect, useState, useMemo } from 'react'
-import cancelableResource from './cancelableResource'
+import { useEffect, useMemo } from 'react'
+import promiseResource from './promiseResource'
 import QuoteDatabase from '../lib/Quote/QuoteDatabase'
-import useUserContext from './useUserContext'
 
-export function useSearchQuotes(params, page) {
-  const uid = `get-search-quotes-${JSON.stringify(params)}-${page}`
-  const { state: { user } } = useUserContext()
-  const auth = user ? { userId: user.user_id } : false
-  const [quotes, setQuotes] = useState(false)
+export default function useQuotes(params, page) {
+  const uid = `get-quotes-${JSON.stringify(params)}-${page}`
   const searchPromise = useMemo(() => {
-    return QuoteDatabase.search({ ...params, page }, auth)
-  }, [params, user])
+    return async () => await QuoteDatabase.search({ ...params, page })
+  }, [])
 
-  const [promise, resource] = cancelableResource(
+  const [{ results }, resource] = promiseResource(
       searchPromise,
       uid,
   )
 
   useEffect(() => {
     return () => resource.cleanup()
-  }, [params])
+  }, [])
 
-  promise
-      .then(({ results }) => {
-        setQuotes(results)
-      })
-      .catch((error) => {
-        if (error.message !== 'The user aborted a request.') {
-          throw error
-        }
-      })
-
-  return { quotes, resource }
+  return results
 }
