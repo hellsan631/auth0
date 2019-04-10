@@ -1,6 +1,4 @@
 import React from 'react'
-import useInput from '../hooks/useInput'
-import Button from './Button'
 import useQuotes from '../hooks/useQuotes'
 import QuoteInput from './QuoteInput'
 

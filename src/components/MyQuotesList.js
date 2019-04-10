@@ -1,6 +1,4 @@
-import React, { Suspense, Fragment, useState, memo } from 'react'
-import { useSearchQuotes } from '../hooks/useQuotes'
-import QuoteItem from './QuoteItem'
+import React, { Suspense, Fragment, memo } from 'react'
 import Loading from './Loading'
 import MyQuotesChunk from './MyQuotesChunk'
 import usePagedArray from '../hooks/usePagedArray'

@@ -1,22 +1,16 @@
 // @flow
 import type {
-  QuotePagination,
   QuoteResponse,
   QuoteParams,
   QuotePost,
   Quote,
 } from './Quote.types'
-import type {
-  CancelablePromise,
-} from './QuoteAPI'
-import { search } from './QuoteAPI'
-import Manager from '../auth0/Manager'
 import EasyFetch from '../EasyFetch'
 
 const BASE_URL = 'https://hellsan631.api.stdlib.com/quotes@0.0.1'
 
-type UserAuth = {
-  userId: string,
+export type CancelablePromise = Promise & {
+  cancel: Function,
 }
 
 const FakeQuotes = []

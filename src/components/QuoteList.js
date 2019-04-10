@@ -1,7 +1,6 @@
 import React, { Fragment, memo, useMemo } from 'react'
 import QuoteChunk from './QuoteChunk'
 import usePagedArray from '../hooks/usePagedArray'
-import useUserContext from '../hooks/useUserContext'
 
 function QuoteList({ pageSize, authorName, text, sortBy, startingPage = 1 }) {
   const memoizedFields = [pageSize, authorName, text, sortBy]

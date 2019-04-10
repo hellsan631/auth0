@@ -1,7 +1,6 @@
 import React, { Fragment, useState, memo } from 'react'
 import useQuotes from '../hooks/useQuotes'
 import QuoteItem from './QuoteItem'
-import useUserContext from '../hooks/useUserContext'
 import ViewportBlock from './ViewportBlock'
 import Button from './Button'
 
