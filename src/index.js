@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
+const rootElement = document.getElementById('root')
+
 const render = (Component) => {
-  return ReactDOM.render(<Component />, document.getElementById('root'))
+  return ReactDOM.render(<Component />, rootElement)
 }
 
 render(App)

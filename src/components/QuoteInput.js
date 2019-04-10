@@ -1,7 +1,36 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
 import Button from './Button'
-import QuoteDatabase from '../lib/Quote/QuoteDatabase';
+
+const FakeQuotes = []
+
+const addFakeQuote = (text, authorName) => {
+  FakeQuotes.push({ text, authorName })
+}
+
+addFakeQuote(
+    'They made the videogame before I learned how to skate, so I was basically forced into doing it.',
+    'Tony Hawk, Probably',
+)
+
+addFakeQuote(
+    'There is no iron in the iron you use to iron your shirts. Which is ironically, both ironic and un-ironic.',
+    'Jeremy Irons, Probably',
+)
+
+addFakeQuote(
+    `Don't fake the funk on a nasty dunk.`,
+    'John Adams, Probably',
+)
+
+addFakeQuote(
+    `When you think of Tim McGraw, I hope you think of me.`,
+    'Winston Churchill, Probably',
+)
+
+const getFakeQuote = () => {
+  return FakeQuotes[Math.round(Math.random() * (FakeQuotes.length - 1))]
+}
 
 export default function QuoteInput({
   disabled,
@@ -12,7 +41,7 @@ export default function QuoteInput({
 }) {
   const [text, handleTextChange] = useInput(defaultText)
   const [authorName, handleAuthorName] = useInput(defaultAuthorName)
-  const fakeQuote = QuoteDatabase.getFakeQuote()
+  const fakeQuote = getFakeQuote()
 
   const addClick = () => {
     onSubmit({

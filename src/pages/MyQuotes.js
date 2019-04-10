@@ -7,7 +7,7 @@ export default function MyQuotes() {
   const { state: { user } } = useUserContext()
   const params = {
     userId: user.user_id,
-    pageSize: 25,
+    pageSize: 15,
   }
   return (
     <div className="container">

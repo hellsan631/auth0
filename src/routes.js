@@ -1,4 +1,7 @@
-import React, { Suspense, lazy, Fragment, useState } from 'react'
+import React, {
+  Suspense, lazy, Fragment, useState, memo,
+  unstable_ConcurrentMode as ConcurrentMode,
+} from 'react'
 import {
   Router,
   Route,
@@ -7,8 +10,8 @@ import {
 import history from './lib/history'
 import HeaderBar from './components/HeaderBar'
 import useUserContext from './hooks/useUserContext'
-import PrivateRoute from './components/PrivateRoute';
-import Loading from './components/Loading';
+import PrivateRoute from './components/PrivateRoute'
+import Loading from './components/Loading'
 
 export const RouteList = [
   {
@@ -47,7 +50,7 @@ export const RouteList = [
   },
 ]
 
-export default function Routes() {
+function Routes() {
   const [hydrated, setHydrated] = useState(false)
   const { state, dispatch } = useUserContext()
 
@@ -89,3 +92,5 @@ export default function Routes() {
     </Fragment>
   )
 }
+
+export default memo(Routes)

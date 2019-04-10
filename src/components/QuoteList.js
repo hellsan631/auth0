@@ -1,4 +1,6 @@
-import React, { Fragment, memo, useMemo } from 'react'
+import React, {
+  Fragment, memo, useMemo,
+} from 'react'
 import QuoteChunk from './QuoteChunk'
 import usePagedArray from '../hooks/usePagedArray'
 

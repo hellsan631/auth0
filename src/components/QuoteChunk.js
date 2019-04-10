@@ -1,4 +1,6 @@
-import React, { Fragment, useState, memo } from 'react'
+import React, {
+  Fragment, useState, memo,
+} from 'react'
 import useSearchQuotes from '../hooks/useSearchQuotes'
 import QuoteItem from './QuoteItem'
 import ViewportBlock from './ViewportBlock'

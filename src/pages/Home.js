@@ -21,7 +21,7 @@ export default function Home() {
       />
       <div className="row">
         <QuoteList
-          pageSize={25}
+          pageSize={15}
           {...params}
         />
       </div>
