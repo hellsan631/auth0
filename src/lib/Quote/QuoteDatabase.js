@@ -13,7 +13,7 @@ import { search } from './QuoteAPI'
 import Manager from '../auth0/Manager'
 import EasyFetch from '../EasyFetch'
 
-const BASE_URL = 'https://hellsan631.api.stdlib.com/quotes@dev'
+const BASE_URL = 'https://hellsan631.api.stdlib.com/quotes@0.0.1'
 
 type UserAuth = {
   userId: string,
