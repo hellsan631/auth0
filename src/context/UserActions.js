@@ -16,6 +16,30 @@ const fetchAndCombineUserData = async (auth) => {
   }
 }
 
+export const handleEditQuote = async (payload, { user, auth }) => {
+  try {
+    await QuoteDatabase.update(payload)
+    toast.success('Successfully edited quote')
+    return {}
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message)
+    return {}
+  }
+}
+
+export const handleRemoveQuote = async ({ quoteId }, { user, auth }) => {
+  try {
+    await QuoteDatabase.remove(quoteId)
+    toast.success('Successfully removed quote')
+    return {}
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message)
+    return {}
+  }
+}
+
 export const handleAddQuote = async (payload, { user, auth }) => {
   try {
     const { sub: userId } = auth.idTokenPayload

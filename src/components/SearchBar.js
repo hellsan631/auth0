@@ -24,7 +24,7 @@ export default function SearchBar({
   return (
     <div className="row">
       <div className="nine columns">
-        <label htmlFor="search">Search</label>
+        <label htmlFor="search">Search By Author Name</label>
         <input
           type="search"
           value={search}

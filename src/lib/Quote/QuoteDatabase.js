@@ -19,7 +19,36 @@ type UserAuth = {
   userId: string,
 }
 
+const FakeQuotes = []
+
+const addFakeQuote = (text: string, authorName: string) => {
+  FakeQuotes.push({ text, authorName })
+}
+
+addFakeQuote(
+    'They made the videogame before I learned how to skate, so I was basically forced into doing it.',
+    'Tony Hawk, Probably',
+)
+
+addFakeQuote(
+    'There is no iron in the iron you use to iron your shirts. Which is ironically, both ironic and un-ironic.',
+    'Jeremy Irons, Probably',
+)
+
+addFakeQuote(
+    `Don't fake the funk on a nasty dunk.`,
+    'John Adams, Probably',
+)
+
+addFakeQuote(
+    `When you think of Tim McGraw, I hope you think of me.`,
+    'Winston Churchill, Probably',
+)
+
 export default class QuoteDatabase {
+  static getFakeQuote(): Quote {
+    return FakeQuotes[Math.round(Math.random() * (FakeQuotes.length - 1))]
+  }
   /**
    * If user authentication information is provided, and page counter is 0, this will return
    * Results by user id, filtered by parameters.
@@ -62,22 +91,44 @@ export default class QuoteDatabase {
       }
       const response = await EasyFetch.fetch(`${BASE_URL}/quote/create/`, request)
       console.log(response)
-      return {
-        results: [],
-      }
+      return response
     } catch (error) {
       console.error(error)
-      return {
-        results: [],
-      }
+      return false
     }
   }
 
-  static async update(updates: QuotePost, userAuth: UserAuth): Promise<Quote> {
-
+  static async update(updates: QuotePost): Promise<Quote> {
+    console.log(updates)
+    try {
+      const request = {
+        method: 'POST',
+        body: {
+          ...updates,
+        },
+        headers: { 'Content-Type': 'application/json' },
+      }
+      const response = await EasyFetch.fetch(`${BASE_URL}/quote/update/`, request)
+      console.log(response)
+      return response
+    } catch (error) {
+      console.error(error)
+      return false
+    }
   }
 
-  static async remove(quoteId: number, userAuth: UserAuth): Promise<Quote> {
-
+  static async remove(quoteId: string): Promise<Quote> {
+    console.log(quoteId)
+    try {
+      const request = {
+        params: { quoteId },
+      }
+      const response = await EasyFetch.fetch(`${BASE_URL}/quote/remove/`, request)
+      console.log(response)
+      return response
+    } catch (error) {
+      console.error(error)
+      return false
+    }
   }
 }

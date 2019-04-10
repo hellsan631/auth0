@@ -1,10 +1,18 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
-import Button from '../components/Button'
+import Button from './Button'
+import QuoteDatabase from '../lib/Quote/QuoteDatabase';
 
-export default function NewQuoteInput({ disabled, onSubmit }) {
-  const [text, handleTextChange] = useInput('')
-  const [authorName, handleAuthorName] = useInput('')
+export default function QuoteInput({
+  disabled,
+  onSubmit,
+  defaultText = '',
+  defaultAuthorName = '',
+  actionText = 'Add Quote',
+}) {
+  const [text, handleTextChange] = useInput(defaultText)
+  const [authorName, handleAuthorName] = useInput(defaultAuthorName)
+  const fakeQuote = QuoteDatabase.getFakeQuote()
 
   const addClick = () => {
     onSubmit({
@@ -20,7 +28,7 @@ export default function NewQuoteInput({ disabled, onSubmit }) {
         <textarea
           value={text}
           onChange={handleTextChange}
-          placeholder="Funny"
+          placeholder={fakeQuote.text}
           id="text"
           className="u-full-width"
         />
@@ -31,7 +39,7 @@ export default function NewQuoteInput({ disabled, onSubmit }) {
           type="text"
           value={authorName}
           onChange={handleAuthorName}
-          placeholder="Someone, Probably"
+          placeholder={fakeQuote.authorName}
           id="authorName"
           className="u-full-width"
         />
@@ -43,7 +51,7 @@ export default function NewQuoteInput({ disabled, onSubmit }) {
           onClick={addClick}
           disabled={disabled}
         >
-          Add Quote
+          {actionText}
         </Button>
       </div>
     </div>

@@ -6,12 +6,24 @@ import {
   handleChangePassword,
   handleMetadataChange,
   handleAddQuote,
+  handleRemoveQuote,
+  handleEditQuote,
 } from './UserActions'
 
 const UserReducer = async (state, { type, payload }) => {
   console.log('type', type)
   switch (type) {
-    case 'ADD_QUOTE': 
+    case 'EDIT_QUOTE':
+      return {
+        ...state,
+        ...await handleEditQuote(payload, state),
+      }
+    case 'REMOVE_QUOTE':
+      return {
+        ...state,
+        ...await handleRemoveQuote(payload, state),
+      }
+    case 'ADD_QUOTE':
       return {
         ...state,
         ...await handleAddQuote(payload, state),
@@ -20,11 +32,11 @@ const UserReducer = async (state, { type, payload }) => {
       return {
         ...state,
         ...await handleMetadataChange(
-          state.auth,
-          {
-            ...state.user.user_metadata,
-            ...payload,
-          }
+            state.auth,
+            {
+              ...state.user.user_metadata,
+              ...payload,
+            }
         ),
       }
     case 'CHANGE_PASSWORD':

@@ -3,7 +3,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import useUserContext from '../hooks/useUserContext'
-import NewQuoteInput from '../components/NewQuoteInput'
+import QuoteInput from '../components/QuoteInput'
 
 export default function AddQuote() {
   const { loading, dispatch } = useUserContext()
@@ -13,7 +13,7 @@ export default function AddQuote() {
     dispatch({
       type: 'ADD_QUOTE',
       payload,
-      success: () => setQuoteAdded(true),
+      onSuccess: () => setQuoteAdded(true),
     })
   }
 
@@ -31,7 +31,7 @@ export default function AddQuote() {
 
   return (
     <div className="container">
-      <NewQuoteInput
+      <QuoteInput
         onSubmit={onSubmit}
         disabled={loading}
       />

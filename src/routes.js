@@ -26,6 +26,11 @@ export const RouteList = [
     authenticated: true,
   },
   {
+    path: '/edit-quote',
+    component: lazy(() => import('./pages/EditQuote')),
+    authenticated: true,
+  },
+  {
     path: '/add-quote',
     component: lazy(() => import('./pages/AddQuote')),
     authenticated: true,
