@@ -56,8 +56,8 @@ function Routes() {
   if (!hydrated) {
     dispatch({
       type: 'HYDRATE',
+      onSuccess: () => setHydrated(true),
     })
-    setHydrated(true)
   }
 
   if (!state.hydrated) {
