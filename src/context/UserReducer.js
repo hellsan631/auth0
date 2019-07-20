@@ -59,7 +59,7 @@ const UserReducer = async (state, { type, payload }) => {
       return state
     case 'LOGOUT':
       handleLogout()
-      return state
+      return {}
     default:
       return state
   }
