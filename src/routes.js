@@ -57,6 +57,7 @@ function Routes() {
     dispatch({
       type: 'HYDRATE',
       onSuccess: () => setHydrated(true),
+      onError: () => setHydrated(true),
     })
   }
 
