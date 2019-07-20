@@ -1,37 +1,39 @@
-// @flow
-
 import { useState } from 'react'
+import useLocalStorage from 'react-use/lib/useLocalStorage'
 
-type DispatchProps = {
-  type: string,
-  payload: any,
-  onSuccess: Function,
-  onError: Function,
-}
+// type DispatchProps = {
+//   type: string,
+//   payload: any,
+//   onSuccess: Function,
+//   onError: Function,
+// }
 
-type ReducerProps = {
-  state: any,
-  loading: boolean,
-  dispatch: Function,
-}
+// type ReducerProps = {
+//   state: any,
+//   loading: boolean,
+//   dispatch: Function,
+// }
 
 function useAsyncReducer(
-    asyncFn: Function,
-    initialState: any,
-): ReducerProps {
+    reducerFn,
+    initialState,
+    key,
+) {
   const [loading, setLoading] = useState(false)
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useLocalStorage(initialState, key)
+  if (!key || typeof reducerFn !== 'function') {
+    // console.log(key, reducerFn)
+    throw new Error('Mismatched Parameters')
+  }
 
-  const dispatch = async (
-    {
-      onSuccess,
-      onError = (err: any): any => console.log(err),
-      ...props
-    }: DispatchProps
-  ) => {
+  const dispatch = async ({
+    onSuccess,
+    onError = (err) => console.error(err),
+    ...props
+  }) => {
     setLoading(true)
     try {
-      const results = await asyncFn(state, props)
+      const results = await reducerFn(state, props)
       setState(results)
       if (onSuccess) {
         onSuccess(results)

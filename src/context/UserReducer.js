@@ -11,7 +11,6 @@ import {
 } from './UserActions'
 
 const UserReducer = async (state, { type, payload }) => {
-  console.log('type', type)
   switch (type) {
     case 'EDIT_QUOTE':
       return {

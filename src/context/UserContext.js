@@ -6,7 +6,7 @@ const UserContext = createContext({})
 
 export function UserProvider({ children }) {
   const context = useContext(UserContext)
-  const reducer = useAsyncReducer(UserReducer, context)
+  const reducer = useAsyncReducer(UserReducer, context, 'user-context')
 
   return (
     <UserContext.Provider value={reducer}>
