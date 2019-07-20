@@ -1,17 +1,17 @@
 // @flow
-import type {
-  QuoteResponse,
-  QuoteParams,
-  QuotePost,
-  Quote,
-} from './Quote.types'
+// import type {
+//   QuoteResponse,
+//   QuoteParams,
+//   QuotePost,
+//   Quote,
+// } from './Quote.types'
 import EasyFetch from '../EasyFetch'
 
 const BASE_URL = 'https://hellsan631.api.stdlib.com/quotes@0.0.1'
 
-export type CancelablePromise = Promise & {
-  cancel: Function,
-}
+// export type CancelablePromise = Promise & {
+//   cancel: Function,
+// }
 
 export default class QuoteDatabase {
   /**
@@ -24,14 +24,14 @@ export default class QuoteDatabase {
    * @return {CancelablePromise<QuoteResponse>}
    * @memberof QuoteDatabase
    */
-  static search(params: QuoteParams): CancelablePromise<QuoteResponse> {
+  static search(params) {
     if (Object.keys(params).length === 0) {
       throw new Error('Search Requires At Least One Parameter')
     }
     return EasyFetch.cancelable(`${BASE_URL}`, { params })
   }
 
-  static async add(quote: QuotePost): Promise<Quote> {
+  static async add(quote) {
     try {
       const request = {
         method: 'POST',
@@ -46,7 +46,7 @@ export default class QuoteDatabase {
     }
   }
 
-  static async update(updates: QuotePost): Promise<Quote> {
+  static async update(updates) {
     try {
       const request = {
         method: 'POST',
@@ -63,7 +63,7 @@ export default class QuoteDatabase {
     }
   }
 
-  static async remove(quoteId: string): Promise<Quote> {
+  static async remove(quoteId) {
     try {
       const request = {
         params: { quoteId },
