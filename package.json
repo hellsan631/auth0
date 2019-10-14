@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "hello": "7e ",
+    "hello": "echo 'world'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "flow": "flow",
